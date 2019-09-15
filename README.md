@@ -1,17 +1,17 @@
-=== Alpine PhotoTile for Instagram ===
-Contributors: theAlpinePress
-Tags: photos, instagram, photostream, javascript, jQuery, stylish, pictures, images, widget, sidebar, display, gallery, wall, lightbox, fancybox, colorbox
-Requires at least: 3.2
-Tested up to: 3.8
-Stable tag: 1.2.7.7
-License: GPLv3 or later
-License URI: http://www.gnu.org/licenses/gpl-3.0.html
+# Alpine PhotoTile for Instagram
+* Contributors: theAlpinePress
+* Tags: photos, instagram, photostream, javascript, jQuery, stylish, pictures, images, widget, sidebar, display, gallery, wall, lightbox, fancybox, colorbox
+* Requires at least: 3.2
+* Tested up to: 3.8
+* Stable tag: 1.2.7.7
+* License: GPLv3 or later
+* License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Simple, stylish, and compact plugin for displaying Instagram photos in a sidebar, post, or page. 
+**Simple, stylish, and compact plugin for displaying Instagram photos in a sidebar, post, or page.**
 
-== Description == 
+### Please Note: This plugin is no longer being developed or maintained. If you are a WordPress developer, I encourage you to take this plugin and make it your own.
 
-**Please Note: This plugin is no longer being developed or maintained. If you are a WordPress developer, I encourage you to take this plugin and make it your own.**
+## Description
 
 Retrieve photos from a particular Instagram user or tag and display them on your WordPress site using the Alpine PhotoTile for Instagram. 
 The photos can be linked to the your Instagram page, a specific URL, or to a Lightbox slideshow. 
@@ -39,7 +39,7 @@ presentation that I hope you will like. A full description and demonstration is 
 6. Open another page/window in your web browser and navigate to your WordPress site to see how the sidebar looks with the Alpine PhotoTile included.
 7. Play around with the various styles and options to find what works best for your site.
 
-== Installation ==
+## Installation
 
 **Plugin Installation**
 
@@ -66,7 +66,7 @@ presentation that I hope you will like. A full description and demonstration is 
 
 13. A shortcode is a line of texted used for loading plugins within WordPress pages or posts. Rather than explaining how to setup the shortcode, I have added a tool to the Alpine PhotoTile plugin that generates the shortcode for you. Visit the "Shortcode Generator" on the plugin's settings page (*Settings->AlpineTile: Instagram->Shortcode Generator*).
 
-== Frequently Asked Questions ==
+## Frequently Asked Questions
 
 **I'm having trouble adding a user and I keep getting an error message. Can you help?**
 
@@ -91,57 +91,76 @@ The plugin can retrieve and display up to 100 photos.
 If you have any more questions, please leave a message at [the Alpine Press](http://thealpinepress.com/alpine-phototile-for-instagram/ "Plugin Demo").
 I am a one-man development team and I distribute these plugins for free, so please be patient with me.
 
-== Changelog ==
+## TODOs
+* Adjust to latest Wordpress version
+* Check for security issues and GDPR compliance
+* Update all libs to latest
+* Move JS to separate file
+* Change to FancyBox 2
+* Add caption to display
+* Rebuild jQuery display
+* Check with Contact Form 7
 
-= 1.2.0 =
-* Rebuilt Alpine PhotoTile series to work with Instagram
-* Rebuilt plugin structure into OBJECT
-* Combined all Alpine Photo Tiles scripts and styles into identical files
-* Improved IE 7 compatibility
-* Added custom image link options
-* Added Fancybox jQuery option
-* Fixed galleryHeight bug
-* Implemented fetch with wp_remote_get()
+## Changelog
 
-= 1.2.1 =
-* Rebuilt admin div structure
-* Fixed admin css issues
+### 1.2.7.7
+* End of development notice
 
-= 1.2.2 =
-* Added aspect ratio options for gallery style
-* Add key generator function
-* Add get_image_url() functions
-* Object oriented id, options, results, and output storage
-* Object oriented display generation
+### 1.2.7.6
+* Fixed Admin Tabs
 
-= 1.2.3 =
-* Add FancyboxForAlpine (Fancybox Safemode)
-* Add choice between Fancybox, prettyBox, and ColorBox
-* Add hidden options, including custom rel for lightbox
+### 1.2.7.5
+* Pretty Photo Update
 
- = 1.2.3.1 =
-* Fixed cache retrieval
-* Removed several style options because all images are squares
+### 1.2.7.4
+* Small bug fixes
 
-= 1.2.4 =
-* Restructured plugin objects and reassinged functions
-* Object oriented message, hidden, etc.
-* Added option to disable right-clicking on images
-* Added updateGlobalOptions and removed individual option calls
-* Added donate button
-* Fixed lightbox param option
+### 1.2.7.3
+* Load files before APTFINbyTAP_widget_register()
 
-= 1.2.5 =
-* Added fallback to dynamic style and script loading using jQuery
-* Various small fixes
-* Moved cache location
-* Updated ColorBox plugin
-* Set Object params to private and implemeted set, check, and get function
-* Implemeted do_alpine_method call
-* Created active options and results functions
-* Improved dynamic script loading
+### 1.2.7.2
+* Illegal string offset fix.
+* Small change to retrieve_from_cache.
 
-= 1.2.6 =
+### 1.2.7.1
+* Small change to endpoints
+* Set limit on number of repeated calls
+
+### 1.2.7
+* Replaced local JSON decoder (with slower but more reliable library).
+* Add Transient and cacheid
+* Add echo_point function
+* Add Plugin Tools page with plugin loading speed test.
+* Disabled Delete Cache button (will not work with transient)
+* Updated manual_cURL function
+
+### 1.2.6.6
+* Add <!--//--><![CDATA[//><!-- to JavaScript
+* Reduced ReadMe
+* Add addEventListener and attachEvent calls to JS loading (for jQuery in footer)
+* Add SSL option
+
+### 1.2.6.5
+* Added wp_strip_all_tags and strip_tags functions to titles
+* jQuery backwards compatibility ( .bind() function for jQuery v1.6.3 and less )
+* Rewrote js functions
+
+### 1.2.6.3
+* Reorganized "Add User" page
+* Add Emoji filter and <, >, &, " and ' encoding (esc_attr function) to photo titles
+
+### 1.2.6.2
+* Change to option functions ( added isset() )
+* Rewrote AddUser() function
+* Add Emoji filter to "Add User" page. Because feed is in JSON, filter must remove all unicode characters written as strings (\u0000 to \uffff)
+
+### 1.2.6.1
+* Check compatibility with WP 3.8
+* Small CSS changes
+* Replaced deprecated jQuery APIs  ( .load() and .browser )
+* Updated prettyPhoto and colorbox
+
+### 1.2.6
 * Fixed jQuery bug (Removed all <> tags from inline scripts)
 * Change json_decode from object to array return
 * Added json_decoder function
@@ -153,66 +172,50 @@ I am a one-man development team and I distribute these plugins for free, so plea
 * Filter out videos
 * Block users
 
-= 1.2.6.1  =
-* Check compatibility with WP 3.8
-* Small CSS changes
-* Replaced deprecated jQuery APIs  ( .load() and .browser )
-* Updated prettyPhoto and colorbox
+### 1.2.5
+* Added fallback to dynamic style and script loading using jQuery
+* Various small fixes
+* Moved cache location
+* Updated ColorBox plugin
+* Set Object params to private and implemeted set, check, and get function
+* Implemeted do_alpine_method call
+* Created active options and results functions
+* Improved dynamic script loading
 
-= 1.2.6.2  =
-* Change to option functions ( added isset() )
-* Rewrote AddUser() function
-* Add Emoji filter to "Add User" page. Because feed is in JSON, filter must remove all unicode characters written as strings (\u0000 to \uffff)
+### 1.2.4
+* Restructured plugin objects and reassinged functions
+* Object oriented message, hidden, etc.
+* Added option to disable right-clicking on images
+* Added updateGlobalOptions and removed individual option calls
+* Added donate button
+* Fixed lightbox param option
 
-= 1.2.6.3 =
-* Reorganized "Add User" page
-* Add Emoji filter and <, >, &, " and ' encoding (esc_attr function) to photo titles
+### 1.2.3.1
+* Fixed cache retrieval
+* Removed several style options because all images are squares
 
-= 1.2.6.5 =
-* Added wp_strip_all_tags and strip_tags functions to titles
-* jQuery backwards compatibility ( .bind() function for jQuery v1.6.3 and less )
-* Rewrote js functions
+### 1.2.3
+* Add FancyboxForAlpine (Fancybox Safemode)
+* Add choice between Fancybox, prettyBox, and ColorBox
+* Add hidden options, including custom rel for lightbox
 
-= 1.2.6.6 =
-* Add <!--//--><![CDATA[//><!-- to JavaScript
-* Reduced ReadMe
-* Add addEventListener and attachEvent calls to JS loading (for jQuery in footer)
-* Add SSL option
+### 1.2.2
+* Added aspect ratio options for gallery style
+* Add key generator function
+* Add get_image_url() functions
+* Object oriented id, options, results, and output storage
+* Object oriented display generation
 
-= 1.2.7 =
-* Replaced local JSON decoder (with slower but more reliable library).
-* Add Transient and cacheid
-* Add echo_point function
-* Add Plugin Tools page with plugin loading speed test.
-* Disabled Delete Cache button (will not work with transient)
-* Updated manual_cURL function
+### 1.2.1
+* Rebuilt admin div structure
+* Fixed admin css issues
 
-= 1.2.7.1 =
-* Small change to endpoints
-* Set limit on number of repeated calls
-
-= 1.2.7.2 =
-* Illegal string offset fix.
-* Small change to retrieve_from_cache.
-
-= 1.2.7.3 =
-* Load files before APTFINbyTAP_widget_register()
-
-= 1.2.7.4 =
-* Small bug fixes
-
-= 1.2.7.5 =
-* Pretty Photo Update
-
-= 1.2.7.6 =
-* Fixed Admin Tabs
-
-= 1.2.7.7 =
-* End of development notice
-
-= TODO =
-* Move JS to separate file
-* Change to FancyBox 2
-* Add caption to display
-* Rebuild jQuery display
-* Check with Contact Form 7
+### 1.2.0
+* Rebuilt Alpine PhotoTile series to work with Instagram
+* Rebuilt plugin structure into OBJECT
+* Combined all Alpine Photo Tiles scripts and styles into identical files
+* Improved IE 7 compatibility
+* Added custom image link options
+* Added Fancybox jQuery option
+* Fixed galleryHeight bug
+* Implemented fetch with wp_remote_get()
