@@ -32,16 +32,6 @@ Copyright 2014  Eric Burger
     exit(__( "Sorry, you are not allowed to access this page directly." ));
   }
 
-  // Pre-2.6 compatibility to find directories
-  if ( ! defined( 'WP_CONTENT_URL' ) )
-    define( 'WP_CONTENT_URL', get_option( 'siteurl' ) . '/wp-content' );
-  if ( ! defined( 'WP_CONTENT_DIR' ) )
-    define( 'WP_CONTENT_DIR', ABSPATH . 'wp-content' );
-  if ( ! defined( 'WP_PLUGIN_URL' ) )
-    define( 'WP_PLUGIN_URL', WP_CONTENT_URL. '/plugins' );
-  if ( ! defined( 'WP_PLUGIN_DIR' ) )
-    define( 'WP_PLUGIN_DIR', WP_CONTENT_DIR . '/plugins' );
-  
 	// Load the pieces
   include_once( WP_PLUGIN_DIR.'/'.basename(dirname(__FILE__)).'/gears/alpinebot-primary.php' );
   include_once( WP_PLUGIN_DIR.'/'.basename(dirname(__FILE__)).'/gears/alpinebot-display.php' );
@@ -161,10 +151,7 @@ Copyright 2014  Eric Burger
   function APTFINbyTAP_enqueue_display_scripts() {
     $bot = new PhotoTileForInstagramPrimary();
     wp_enqueue_script( 'jquery' );
-    //wp_deregister_script('jquery');
-    //wp_register_script('jquery', ("http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"), false, '1.3.2', true);
-    //wp_enqueue_script('jquery');
-    $bot->do_alpine_method('register_style_and_script'); // Register widget styles and scripts
+     $bot->do_alpine_method('register_style_and_script'); // Register widget styles and scripts
   }
   add_action('wp_enqueue_scripts', 'APTFINbyTAP_enqueue_display_scripts');
   
