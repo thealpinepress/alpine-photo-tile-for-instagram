@@ -17,7 +17,7 @@ class PhotoTileForInstagramAdminSecondary extends PhotoTileForInstagramPrimary{
  * @since 1.2.0
  *
  */
-  function admin_simple_update( $currenttab, $newoptions, $oldoptions ){
+  public function admin_simple_update( $currenttab, $newoptions, $oldoptions ){
     $options = $this->option_defaults();
     $bytab = $this->admin_get_options_by_tab( $currenttab );
     foreach( $bytab as $id){
@@ -38,7 +38,7 @@ class PhotoTileForInstagramAdminSecondary extends PhotoTileForInstagramPrimary{
  *  
  *  @ Since 1.2.0
  */
-  function admin_get_options_by_tab( $tab = 'generator' ){
+public function admin_get_options_by_tab( $tab = 'generator' ){
     $default_options = $this->option_defaults();
     $return = array();
     foreach($default_options as $key => $val){
@@ -53,7 +53,7 @@ class PhotoTileForInstagramAdminSecondary extends PhotoTileForInstagramPrimary{
  *  
  *  @ Since 1.2.0
  */
-  function admin_get_settings_by_tab( $tab = 'generator' ){
+public function admin_get_settings_by_tab( $tab = 'generator' ){
     $current = $this->get_all_options();
     $default_options = $this->option_defaults();
     $return = array();
@@ -70,7 +70,7 @@ class PhotoTileForInstagramAdminSecondary extends PhotoTileForInstagramPrimary{
  *  @ Since 1.2.0
  *  @ Updated 1.2.3
  */
-  function get_option_positions_by_tab( $tab = 'generator' ){
+public function get_option_positions_by_tab( $tab = 'generator' ){
     $positions = $this->admin_option_positions();
     $return = array();
     if( isset($positions[$tab]) ){
@@ -94,7 +94,7 @@ class PhotoTileForInstagramAdminSecondary extends PhotoTileForInstagramPrimary{
  *  
  *  @ Since 1.2.0
  */
-  function admin_get_widget_options_by_position(){
+public function admin_get_widget_options_by_position(){
     $default_options = $this->option_defaults();
     $positions = $this->admin_widget_positions();
     $return = array();
@@ -120,7 +120,7 @@ class PhotoTileForInstagramAdminSecondary extends PhotoTileForInstagramPrimary{
  * @ Since 1.1.0
  * @ Update 1.2.5
  */
-  function admin_generate_shortcode( $options, $optiondetails ){
+    public function admin_generate_shortcode( $options, $optiondetails ){
     $short = '['.$this->get_private('short');
 		$id = rand(100, 1000);
 		$short .= ' id='.$id;
@@ -148,7 +148,7 @@ class PhotoTileForInstagramAdminSecondary extends PhotoTileForInstagramPrimary{
  * @link`http://www.onedesigns.com/tutorials/separate-multiple-theme-options-pages-using-tabs	Daniel Tara
  *
  */
-  function admin_options_page_tabs( $current = 'general' ) {
+    public function admin_options_page_tabs( $current = 'general' ) {
     $tabs = $this->admin_settings_page_tabs();
     $links = array();
     
@@ -175,7 +175,7 @@ class PhotoTileForInstagramAdminSecondary extends PhotoTileForInstagramPrimary{
  * @ Since 1.2.0
  * @ Updated 1.2.4
  */
-  function admin_display_general(){ 
+public function admin_display_general(){
     ?>
       <h3><?php _e("Thank you for downloading the "); echo $this->get_private('name'); _e(", <br>a WordPress plugin by the Alpine Press.");?></h3>
       <?php if( $this->check_private('termsofservice') ) {
@@ -202,7 +202,7 @@ class PhotoTileForInstagramAdminSecondary extends PhotoTileForInstagramPrimary{
  * @ Since 1.2.4
  * @ Updated 1.2.5
  */
-  function admin_donate_button(){
+public function admin_donate_button(){
     $phrases = array('Pocket change is appreciated.','Buy me a cup of tea?','Help me pay my rent?','You tip your waiter. Why not your WordPress developer?','You tip the pizza deliver boy. Why not your WordPress programmer?');
     ?>
     <div>
@@ -223,7 +223,7 @@ class PhotoTileForInstagramAdminSecondary extends PhotoTileForInstagramPrimary{
  * @ Updated 1.2.7
  *
  */
-  function admin_setup_options_form($currenttab){
+    public function admin_setup_options_form($currenttab){
     $options = $this->get_all_options();     
     $settings_section = $this->get_private('id'). '_' . $currenttab . '_tab';
     $submitted = ( ( isset($_POST[ "hidden" ]) && ($_POST[ "hidden" ]=="Y") ) ? true : false );
@@ -237,17 +237,20 @@ class PhotoTileForInstagramAdminSecondary extends PhotoTileForInstagramPrimary{
 			//
 			// DELETE CACHE BUTTON HAS BEEN DISABLED ON USER-SIDE
 			//
+        check_admin_referer( $currenttab);
       $bot = new PhotoTileForInstagramBot();
       $bot->clearAllCache();
       echo '<div class="announcement">'.__("Cache Cleared").'</div>';
     }
     elseif( $buttom == 'Save Settings' ){
+        check_admin_referer( $currenttab);
       $bot = new PhotoTileForInstagramBot();
       $bot->clearAllCache();
       echo '<div class="announcement">'.__("Settings Saved").'</div>';
     }
     echo '<form action="" method="post">';
       echo '<input type="hidden" name="hidden" value="Y">';
+        wp_nonce_field($currenttab);
       $this->admin_display_opt_form($options,$currenttab);
       echo '<div class="AlpinePhotoTiles-breakline"></div>';
     echo '</form>';
@@ -260,7 +263,7 @@ class PhotoTileForInstagramAdminSecondary extends PhotoTileForInstagramPrimary{
  * @ Updated 1.2.7
  *
  */
-  function admin_display_opt_form($options,$currenttab){
+    public function admin_display_opt_form($options,$currenttab){
 
     $defaults = $this->option_defaults();
     $positions = $this->get_option_positions_by_tab( $currenttab );
@@ -364,7 +367,7 @@ class PhotoTileForInstagramAdminSecondary extends PhotoTileForInstagramPrimary{
  * @ Since 1.0.0
  * @ Updated 1.2.6.1
  */
-  function MenuDisplayCallback($options,$option,$fieldname,$fieldid){
+public function MenuDisplayCallback($options,$option,$fieldname,$fieldid){
     $default = (isset($option['default'])?$option['default']:'');
     $optionname = (isset($option['name'])?$option['name']:'');
     $optiontitle = (isset($option['title'])?$option['title']:'');
@@ -456,7 +459,7 @@ class PhotoTileForInstagramAdminSecondary extends PhotoTileForInstagramPrimary{
  * @ Since 1.0.0
  * @ Updated 1.2.6.1
  */
-  function AdminDisplayCallback($options,$option,$fieldname,$fieldid){
+    public function AdminDisplayCallback($options,$option,$fieldname,$fieldid){
     $default = (isset($option['default'])?$option['default']:'');
     $optionname = (isset($option['name'])?$option['name']:'');
     $optiontitle = (isset($option['title'])?$option['title']:'');
@@ -551,7 +554,7 @@ class PhotoTileForInstagramAdminSecondary extends PhotoTileForInstagramPrimary{
  * @ Since 1.0.0
  * @ Updated 1.2.6
  */
-  function MenuOptionsValidate( $newinput, $oldinput, $optiondetails ) {
+public function MenuOptionsValidate( $newinput, $oldinput, $optiondetails ) {
       $valid_input = $oldinput;
       $type = (isset($optiondetails['type'])?$optiondetails['type']:'');
       // Validate checkbox fields
@@ -705,7 +708,7 @@ class PhotoTileForInstagramAdmin extends PhotoTileForInstagramAdminSecondary{
  * @ Since 1.2.0
  * @ Updated 1.2.6.2
  */
-  function AddUser( $post_content ){
+public function AddUser( $post_content ){
     /* $post_content = array(
           'access_token' => $access_token,
           'username' => $user->username,
@@ -746,7 +749,7 @@ class PhotoTileForInstagramAdmin extends PhotoTileForInstagramAdminSecondary{
  * @since 1.2.0
  *
  */
-  function DeleteUser( $user ){
+public function DeleteUser( $user ){
     $oldoptions = $this->get_all_options();
     $currentUsers = $oldoptions['users'];
     if( !empty($currentUsers[$user]) ){
@@ -761,7 +764,7 @@ class PhotoTileForInstagramAdmin extends PhotoTileForInstagramAdminSecondary{
  * @since 1.2.0
  *
  */
-  function UpdateUser( $data ){
+public function UpdateUser( $data ){
     $oldoptions = $this->get_all_options();
     $currentUsers = $oldoptions['users'];
 
@@ -784,6 +787,7 @@ class PhotoTileForInstagramAdmin extends PhotoTileForInstagramAdminSecondary{
    * @ Updated 1.2.7.6
    */
   function admin_build_settings_page(){
+      $currenttab = sanitize_text_field($_GET['tab']);
     $currenttab = isset( $_GET['tab'] )?$_GET['tab']:'general';
     // Check for valid tab
     $possible_tabs = array_keys( $this->admin_settings_page_tabs() );
@@ -809,8 +813,7 @@ class PhotoTileForInstagramAdmin extends PhotoTileForInstagramAdminSecondary{
         
         echo '<div class="bottom" style="position:relative;width:100%;margin-top:20px;">';
           //$this->admin_donate_button();
-          echo '<div class="help-link"><p>'.__('Need Help? Visit ').'<a href="'.$this->get_private('info').'" target="_blank">the Alpine Press</a>'.__(' for more about this plugin.').'</p></div>'; 
-					echo '<div><b>**Please Note: This plugin is no longer being developed or maintained. If you are a WordPress developer, I encourage you to take this plugin and make it your own.**</b></div>';
+
         echo '</div>';
       echo '</div>'; // Close Container
       
@@ -823,7 +826,7 @@ class PhotoTileForInstagramAdmin extends PhotoTileForInstagramAdminSecondary{
  * @ Since 1.2.0
  * @ Updated 1.2.5
  */
-  function show_user($info){
+public function show_user($info){
     $name = (isset($info['username'])?$info['username']:'user');
     $picture = (isset($info['picture'])?$info['picture']:'user');
     $output = '<div id="user-icon-'.$name.'" class="user-icon" style="padding-bottom:10px;">';
@@ -863,7 +866,7 @@ class PhotoTileForInstagramAdmin extends PhotoTileForInstagramAdminSecondary{
  * @ Since 1.2.0
  * @ Updated 1.2.7
  */
-  function admin_display_add(){ 
+public function admin_display_add(){
   
     $currenttab = 'add';
     $options = $this->get_all_options();     
@@ -877,6 +880,7 @@ class PhotoTileForInstagramAdmin extends PhotoTileForInstagramAdminSecondary{
       
       
     if( isset($_POST['add-user']) ){
+        check_admin_referer( $currenttab );
       if( !empty($_POST['client_id']) && !empty($_POST['client_secret']) ){
         $options = $this->admin_simple_update( $currenttab, $_POST, $options ); // Don't display previously input info
         ?>
@@ -896,13 +900,15 @@ class PhotoTileForInstagramAdmin extends PhotoTileForInstagramAdminSecondary{
     }
     elseif( isset($_POST['delete-user']) && isset($_POST['user']) ){
       // Delete User button was pressed
+        check_admin_referer( $currenttab );
       $delete = true;
       $user = $_POST['user'];
-      $this->DeleteUser( $user );
+        $this->DeleteUser( sanitize_text_field($user) );
     }
     elseif( isset($_POST['update-user']) && isset($_POST['user']) ){
       // Update User button was pressed
-      $user = $_POST['user'];
+        check_admin_referer( $currenttab );
+        $user = sanitize_text_field($_POST['user']);
       $users = $this->get_instagram_users();
       if( !empty($users) && !empty($users[$user]) && !empty($users[$user]['access_token']) && !empty($users[$user]['user_id']) ){
         $request = 'https://api.instagram.com/v1/users/'.$users[$user]['user_id'].'/?access_token='.$users[$user]['access_token'];
@@ -915,13 +921,9 @@ class PhotoTileForInstagramAdmin extends PhotoTileForInstagramAdminSecondary{
         );
         if( is_wp_error( $response ) || !isset($response['body']) ) {
           // Try again
-          if( method_exists( $this, 'manual_cURL' ) ){
-            $content = $this->manual_cURL($request);
-          }
-          
-          if( !isset($content) ){
+
             $errormessage = 'User not updated';
-          }
+
         }else{
           $content = $response['body'];
         }
@@ -958,7 +960,7 @@ class PhotoTileForInstagramAdmin extends PhotoTileForInstagramAdminSecondary{
     }
     elseif( isset($_GET['code']) ) {
       // Callback has been received from Instagram
-      $code = $_GET['code'];
+        $code = sanitize_text_field($_GET['code']);
       $client_id = $this->get_option('client_id');
       $client_secret = $this->get_option('client_secret');
       $url = 'https://api.instagram.com/oauth/access_token';
@@ -984,12 +986,9 @@ class PhotoTileForInstagramAdmin extends PhotoTileForInstagramAdminSecondary{
 
       if( is_wp_error( $response ) || !isset($response['body']) ) {
         // Try again
-        if( method_exists( $this, 'manual_cURL' ) ){
-          $content = $this->manual_cURL($url,$fields);
-        }
-        if( !isset($content) ){
+
           $errormessage = 'User not added';
-        }
+
       }else{
         $content = $response['body'];
       }
@@ -1077,6 +1076,7 @@ class PhotoTileForInstagramAdmin extends PhotoTileForInstagramAdminSecondary{
                 ?>
                 <form id="<?php echo $this->get_private('settings')."-add-user";?>" action="" method="post">
                 <input type="hidden" name="hidden" value="Y">
+                    <?php wp_nonce_field( $currenttab ); ?>
                 <input type="hidden" name="add-user" value="Y">
                   <?php 
                 echo '<div class="'. $position .'">'; 
@@ -1116,7 +1116,7 @@ class PhotoTileForInstagramAdmin extends PhotoTileForInstagramAdminSecondary{
  *  
  * @ Since 1.2.6.3
  */
-  function admin_display_method_one($redirect){ 
+  public function admin_display_method_one($redirect){
     ?>
       <div style="margin-top:40px;padding-top:10px;border-top: 1px solid #DDDDDD;">
           <h2><?php _e("Method One (Try this first)");?>:</h2>
@@ -1167,50 +1167,8 @@ class PhotoTileForInstagramAdmin extends PhotoTileForInstagramAdminSecondary{
  *  
  * @ Since 1.2.6.3
  */
-  function admin_display_method_two(){ 
-       ?>
-      <div style="margin-top:80px;padding-top:10px;border-top: 1px solid #DDDDDD;">
-        <h2><?php _e("Method Two (If Method One is not working)");?>:</h2>
-        <p>Your Internet browser or the server that your WordPress site is hosted on may cause Method One to fail. Therefore, in Method Two you will use a tool hosted at theAlpinePress.com to retrieve the information you need and then manually submit it to the plugin using the form below.</p>
-          <ol>
-            <li>
-              <?php _e('Follow directions 1 through 6 at');?> <a href="http://thealpinepress.com/instagram-tool/" target="_blank">the Alpine Press</a> <?php _e('to register another Instagram client and to retrieve your Instagram user information. Do not skip any of the steps.');?>
-            </li>
-            <li>
-              <?php _e('Once this is done, your Instagram information will be displayed in a green box. Fill out the "Manually Add New User" form below and click "Store User Information".');?> 
-            </li>
-          </ol>
+  public function admin_display_method_two(){
 
-         <div id="AlpinePhotoTiles-manual-user-form" style="overflow:hidden;padding:20px;border: 1px solid #DDDDDD;">
-            <h4>Manually Add New User</h4>
-            <form id="alpine-photo-tile-for-instagram-settings-add-user" method="post" action="">
-              <input type="hidden" value="Y" name="hidden">
-                <div class="center">
-                  <table class="form-table">
-                    <tbody>
-                      <?php  $the_content = array('username' => 'Username','user_id' =>'User ID','access_token' => 'Access Token','client_id' => 'Client ID','client_secret' => 'Client Secret','picture' => 'Picture');
-                        foreach($the_content as $name=>$title){
-                        ?>
-                        <tr valign="top">
-                        <td>
-                          <div class="title">
-                          <label for="<?php echo $name;?>"><?php echo $title;?> : </label>
-                          </div>
-                          <input id="<?php echo $name;?>" type="text" value="" name="<?php echo $name;?>" style="width:400px">
-                        </td>
-                        </tr>
-
-                        <?php }?>
-                    </tbody>
-                  </table>
-                </div>
-              <input id="manual-form-submit" class="button-primary" type="submit" value="Store User Information" style="margin-top:15px;" name="manual-user-form">
-            </form>
-          <br style="clear:both;">
-        </div>
-
-      </div>
-    <?php
   }
   
 /**
@@ -1218,7 +1176,7 @@ class PhotoTileForInstagramAdmin extends PhotoTileForInstagramAdminSecondary{
  *  
  * @ Since 1.2.6.3
  */
-  function admin_display_add_message(){ 
+  public function admin_display_add_message(){
     ?>   
       <h1><?php _e('How to add an Instagram User');?>:</h1>
       <h3>(<?php _e("Don't worry. I promise it's EASY");?>!!!)</h3>
@@ -1232,7 +1190,7 @@ class PhotoTileForInstagramAdmin extends PhotoTileForInstagramAdminSecondary{
  *  
  * @ Since 1.2.7
  */
-  function admin_display_tools(){ 
+  public function admin_display_tools(){
 		echo '<div class="top">'; 
 			echo '<h4>System Check</h4>';
 			echo '<div style="margin-bottom:15px;"><span class="describe" >Check the settings and extensions on your web server.</span></div>'; 
@@ -1297,11 +1255,8 @@ class PhotoTileForInstagramAdmin extends PhotoTileForInstagramAdminSecondary{
 					echo '</div></td></tr>';
 					// Rec
 					echo '<tr valign="top"><td class="unlinked "><div class="title">';
-						echo '<p>If you are looking for a new/better web host, I recommend the following sites. (Full disclosure: I use these sites, am in their affiliate programs, and get paid a commision if you sign up using these links):</p>';
-						echo '<ul>';
-							echo '<li style="list-style-type:disc;margin-left:3em;"><a href="http://www.bluehost.com/track/thealpinepress" target="_blank">BlueHost</a> is one of the most popular hosting options on the Internet. They are also the most recommended hosting service by WordPress. BlueHost makes it quick and easy to install WordPress and I use them to host theAlpinePress.com.</li>';
-							echo '<li style="list-style-type:disc;margin-left:3em;"><a href="https://www.fatcow.com/join/index.bml?AffID=645572&amp;LinkName=alpineinstagram" target="_blank">FatCow</a> is a nice, cheap option. I have noticed that the servers go down a few times a year, but since I pay around $4 a month to host 3 WordPress sites (ElectricTreeHouse.com, Rebuild-US.net, and KylinUntitled.com), I am okay with it.</li>';
-						echo '</ul>';
+
+
 						
 					echo '</div></td></tr>';
 					
@@ -1314,9 +1269,11 @@ class PhotoTileForInstagramAdmin extends PhotoTileForInstagramAdminSecondary{
 
     $defaults = $this->option_defaults();
     $submitted = ( ( isset($_POST[ "hidden" ]) && ($_POST[ "hidden" ]=="Y") ) ? true : false );
-		
+		$user = wp_get_current_user();
+    $allowed_roles = array('administrator');
+
       $test = (isset($_POST[ $this->get_private('settings').'_test']['submit-test']) && $_POST[ $this->get_private('settings').'_test']['submit-test'] == 'Test Plugin')?true:false;
-      if( $submitted && isset($_POST['shortcode']) && $test ){
+      if(array_intersect($allowed_roles, $user->roles ) && $submitted && isset($_POST['shortcode']) && $test ){
         $short = str_replace('\"','"',$_POST['shortcode']);
       }else{
 				$short = '';
