@@ -51,7 +51,7 @@ Copyright 2014  Eric Burger
 				// Check if already added
 				if (!function_exists('alpine_json_decode')) {
 					// Use Services_JSON by PEAR, http://pear.php.net/package/Services_JSON/
-					include_once( WP_PLUGIN_DIR.'/'.basename(dirname(__FILE__)).'/gears/JSON.php' );
+					//include_once( WP_PLUGIN_DIR.'/'.basename(dirname(__FILE__)).'/gears/JSON.php' );
 					function alpine_json_decode($content, $assoc=false) {
 							if( class_exists('Services_JSON') ){
 									if ($assoc) {
