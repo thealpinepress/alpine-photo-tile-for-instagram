@@ -3,7 +3,7 @@
 Plugin Name: Alpine PhotoTile for Instagram
 Plugin URI: http://thealpinepress.com/alpine-phototile-for-instagram/
 Description: The Alpine PhotoTile for Instagram is capable of retrieving photos from a particular Instagram user or tag. The photos can be linked to the your Instagram page, a specific URL, or to a Fancybox slideshow. Also, the Shortcode Generator makes it easy to insert the widget into posts without learning any of the code. This lightweight but powerful widget takes advantage of WordPress's built in JQuery scripts to create a sleek presentation that I hope you will like.
-Version: 1.2.7.7
+Version: 1.2.8
 Author: the Alpine Press
 Author URI: http://thealpinepress.com/
 License: GNU General Public License v3.0
@@ -32,22 +32,12 @@ Copyright 2014  Eric Burger
     exit(__( "Sorry, you are not allowed to access this page directly." ));
   }
 
-  // Pre-2.6 compatibility to find directories
-  if ( ! defined( 'WP_CONTENT_URL' ) )
-    define( 'WP_CONTENT_URL', get_option( 'siteurl' ) . '/wp-content' );
-  if ( ! defined( 'WP_CONTENT_DIR' ) )
-    define( 'WP_CONTENT_DIR', ABSPATH . 'wp-content' );
-  if ( ! defined( 'WP_PLUGIN_URL' ) )
-    define( 'WP_PLUGIN_URL', WP_CONTENT_URL. '/plugins' );
-  if ( ! defined( 'WP_PLUGIN_DIR' ) )
-    define( 'WP_PLUGIN_DIR', WP_CONTENT_DIR . '/plugins' );
-  
 	// Load the pieces
-  include_once( WP_PLUGIN_DIR.'/'.basename(dirname(__FILE__)).'/gears/alpinebot-primary.php' );
-  include_once( WP_PLUGIN_DIR.'/'.basename(dirname(__FILE__)).'/gears/alpinebot-display.php' );
-	include_once( WP_PLUGIN_DIR.'/'.basename(dirname(__FILE__)).'/gears/alpinebot-admin.php' );
-	include_once( WP_PLUGIN_DIR.'/'.basename(dirname(__FILE__)).'/gears/plugin-widget.php' );
-	include_once( WP_PLUGIN_DIR.'/'.basename(dirname(__FILE__)).'/gears/plugin-shortcode.php' );
+  require_once __DIR__ . '/gears/alpinebot-primary.php';
+  require_once __DIR__ . '/gears/alpinebot-display.php';
+  require_once __DIR__ . '/gears/alpinebot-admin.php';
+  require_once __DIR__ . '/gears/plugin-widget.php';
+  require_once __DIR__ . '/gears/plugin-shortcode.php';
 
 /**
  * Register Widget
@@ -61,7 +51,7 @@ Copyright 2014  Eric Burger
 				// Check if already added
 				if (!function_exists('alpine_json_decode')) {
 					// Use Services_JSON by PEAR, http://pear.php.net/package/Services_JSON/
-					include_once( WP_PLUGIN_DIR.'/'.basename(dirname(__FILE__)).'/gears/JSON.php' );
+					require_once __DIR__ . '/gears/JSON.php' ;
 					function alpine_json_decode($content, $assoc=false) {
 							if( class_exists('Services_JSON') ){
 									if ($assoc) {
@@ -87,7 +77,7 @@ Copyright 2014  Eric Burger
  * @ Since 1.0.0
  * @ Updated 1.2.3
  */
-	function APTFINbyTAP_admin_widget_script($hook){ 
+  function APTFINbyTAP_admin_widget_script($hook){
     $bot = new PhotoTileForInstagramBot(); // Bot needed to clean cache
     wp_register_script($bot->get_private('ajs'),$bot->get_script('admin'),'',$bot->get_private('ver') ); 
     wp_register_style($bot->get_private('acss'),$bot->get_style('admin'),'',$bot->get_private('ver') );
@@ -104,7 +94,7 @@ Copyright 2014  Eric Burger
     // Only admin can trigger two week cache cleaning by visiting widgets.php
     $disablecache = $bot->get_option( 'cache_disable' );
     if ( empty($disablecache) ) { $bot->do_alpine_method('cleanCache'); }
-	}
+  }
   add_action('admin_enqueue_scripts', 'APTFINbyTAP_admin_widget_script'); 
   
 /**
