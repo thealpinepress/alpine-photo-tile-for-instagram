@@ -1,14 +1,7 @@
 <?php
-/**
- * Class SampleTest
- *
- * @package Automatically_Paginate_Posts
- */
+require_once __DIR__ . '/../alpine-phototile-for-instagram.php';
 
-/**
- * Sample test case.
- */
-class SampleTest extends WP_UnitTestCase {
+class PluginRegistrationTest extends WP_UnitTestCase {
 
 	/**
 	 * A single example test.
