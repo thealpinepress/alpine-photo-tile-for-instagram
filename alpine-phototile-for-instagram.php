@@ -51,7 +51,7 @@ Copyright 2014  Eric Burger
 				// Check if already added
 				if (!function_exists('alpine_json_decode')) {
 					// Use Services_JSON by PEAR, http://pear.php.net/package/Services_JSON/
-					require_once __DIR__ . '/gears/JSON.php' ;
+
 					function alpine_json_decode($content, $assoc=false) {
 							if( class_exists('Services_JSON') ){
 									if ($assoc) {
@@ -77,7 +77,7 @@ Copyright 2014  Eric Burger
  * @ Since 1.0.0
  * @ Updated 1.2.3
  */
-  function APTFINbyTAP_admin_widget_script($hook){
+	function APTFINbyTAP_admin_widget_script($hook){
     $bot = new PhotoTileForInstagramBot(); // Bot needed to clean cache
     wp_register_script($bot->get_private('ajs'),$bot->get_script('admin'),'',$bot->get_private('ver') ); 
     wp_register_style($bot->get_private('acss'),$bot->get_style('admin'),'',$bot->get_private('ver') );
@@ -94,7 +94,7 @@ Copyright 2014  Eric Burger
     // Only admin can trigger two week cache cleaning by visiting widgets.php
     $disablecache = $bot->get_option( 'cache_disable' );
     if ( empty($disablecache) ) { $bot->do_alpine_method('cleanCache'); }
-  }
+	}
   add_action('admin_enqueue_scripts', 'APTFINbyTAP_admin_widget_script'); 
   
 /**
@@ -151,10 +151,7 @@ Copyright 2014  Eric Burger
   function APTFINbyTAP_enqueue_display_scripts() {
     $bot = new PhotoTileForInstagramPrimary();
     wp_enqueue_script( 'jquery' );
-    //wp_deregister_script('jquery');
-    //wp_register_script('jquery', ("http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"), false, '1.3.2', true);
-    //wp_enqueue_script('jquery');
-    $bot->do_alpine_method('register_style_and_script'); // Register widget styles and scripts
+     $bot->do_alpine_method('register_style_and_script'); // Register widget styles and scripts
   }
   add_action('wp_enqueue_scripts', 'APTFINbyTAP_enqueue_display_scripts');
   
