@@ -9,34 +9,35 @@
  
 class Alpine_PhotoTile_for_Instagram extends WP_Widget { 
 
-	function Alpine_PhotoTile_for_Instagram() {
-    $this->alpinebot = new PhotoTileForInstagramPrimary();
-    $bot = $this->alpinebot;
-		$widget_ops = array('classname' => $bot->get_private('id'), 'description' => __($bot->get_private('wdesc')));
-		$control_ops = array('width' => 550, 'height' => 350);
-		$this->__construct($bot->get_private('domain'), __($bot->get_private('name')), $widget_ops, $control_ops);
-	}
+    public function __construct()
+    {
+        $bot = new PhotoTileForInstagramPrimary();
+        $widget_ops = array('classname' => $bot->get_private('id'), 'description' => __($bot->get_private('wdesc')));
+        $control_ops = array('width' => 550, 'height' => 350);
+        parent::__construct($bot->get_private('domain'), __($bot->get_private('name')), $widget_ops, $control_ops);
+
+    }
 /**
  * Widget
  *
  * @ Updated 1.2.7
  */
-	function widget( $args, $options ) {
+	public function widget( $args, $options ) {
     $bot = new PhotoTileForInstagramBot();
 		extract($args);
-    
-    // Set Important Widget Options    
+
+    // Set Important Widget Options
     $bot->set_private('wid',$args['widget_id']);
 		$bot->set_private('cacheid',$args['widget_id']);
     $bot->set_private('options',$options);
     $bot->do_alpine_method( 'update_global_options' );
-    $bot->do_alpine_method( 'enqueue_style_and_script' );  
+    $bot->do_alpine_method( 'enqueue_style_and_script' );
     // Do the photo search
     $bot->do_alpine_method( 'photo_retrieval' );
-    
+
     echo $before_widget . $before_title . $options['widget_title'] . $after_title;
     echo $bot->get_active_result('hidden');
-    if( $bot->check_active_result('success') ){  
+    if( $bot->check_active_result('success') ){
       if( isset($options['style_option']) && 'vertical' == $options['style_option'] ){
         $bot->do_alpine_method( 'display_vertical' );
       }elseif( isset($options['style_option']) && 'cascade' == $options['style_option'] ){
@@ -46,7 +47,7 @@ class Alpine_PhotoTile_for_Instagram extends WP_Widget {
       }
       echo $bot->get_private('output');
     }
-    // If user does not have necessary extensions 
+    // If user does not have necessary extensions
     // or error occured before content complete, report such...
     elseif( $bot->check_active_option('general_hide_message') ){
       echo '<!-- Sorry:<br>'.$bot->get_active_result('message').'-->';
@@ -60,7 +61,7 @@ class Alpine_PhotoTile_for_Instagram extends WP_Widget {
  *
  * @ Updated 1.2.5
  */
-	function update( $newoptions, $oldoptions ) {
+	public function update( $newoptions, $oldoptions ) {
     $bot = new PhotoTileForInstagramAdmin();
     $optiondetails = $bot->option_defaults();
 
@@ -75,7 +76,7 @@ class Alpine_PhotoTile_for_Instagram extends WP_Widget {
  *
  * @ Updated 1.2.7
  */
-	function form( $options ) {
+public function form( $options ) {
 
     $bot = new PhotoTileForInstagramAdmin();
     
@@ -133,7 +134,7 @@ class Alpine_PhotoTile_for_Instagram extends WP_Widget {
         <div><?php _e('Check the ') ?><a href="<?php echo 'options-general.php?page='.$bot->get_private('settings').'&tab=plugin-settings' ?>" target="_blank">Plugin Settings</a> <?php _e('page for additional options.') ?></div> 
 				<div><?php _e('Visit the ') ?><a href="<?php echo 'options-general.php?page='.$bot->get_private('settings').'&tab=plugin-tools' ?>" target="_blank">Plugin Tools</a> <?php _e('page to check the plugin\'s loading time on your server.') ?></div> 
         <div><?php _e('Need Help? Visit ') ?><a href="<?php echo $bot->get_private('info'); ?>" target="_blank">the Alpine Press</a> <?php _e('for more about this plugin.') ?></div>
-				<div><b>**Please Note: This plugin is no longer being developed or maintained. If you are a WordPress developer, I encourage you to take this plugin and make it your own.**</b></div>
+
       </div>
     </div><?php // Close container
     

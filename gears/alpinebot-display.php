@@ -55,7 +55,7 @@ class PhotoTileForInstagramBotSecondary extends PhotoTileForInstagramPrimary{
  *  @ Since 1.2.2
  */  
   function filter_filename( $name ){
-    $name = @ereg_replace('[[:cntrl:]]', '', $name ); // remove ASCII's control characters
+    $name = @preg_replace('[[:cntrl:]]', '', $name ); // remove ASCII's control characters
     $bad = array_merge(
       array_map('chr', range(0,31)),
       array("<",">",":",'"',"/","\\","|","?","*"," ",",","\'",".")); 
