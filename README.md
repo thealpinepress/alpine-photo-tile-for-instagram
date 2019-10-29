@@ -2,14 +2,12 @@
 * Contributors: theAlpinePress
 * Tags: photos, instagram, photostream, javascript, jQuery, stylish, pictures, images, widget, sidebar, display, gallery, wall, lightbox, fancybox, colorbox
 * Requires at least: 3.2
-* Tested up to: 3.8
-* Stable tag: 1.2.7.7
+* Tested up to: 5.2.3
+* Stable tag: 1.2.8
 * License: GPLv3 or later
 * License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 **Simple, stylish, and compact plugin for displaying Instagram photos in a sidebar, post, or page.**
-
-### Please Note: This plugin is no longer being developed or maintained. If you are a WordPress developer, I encourage you to take this plugin and make it your own.
 
 ## Description
 
@@ -92,7 +90,6 @@ If you have any more questions, please leave a message at [the Alpine Press](htt
 I am a one-man development team and I distribute these plugins for free, so please be patient with me.
 
 ## TODOs
-* Adjust to latest Wordpress version
 * Check for security issues and GDPR compliance
 * Update all libs to latest
 * Move JS to separate file
@@ -102,6 +99,11 @@ I am a one-man development team and I distribute these plugins for free, so plea
 * Check with Contact Form 7
 
 ## Changelog
+
+### 1.2.8
+* Updated to the latest Wordpress and PHP versions
+* Added Magnific pop up
+* Introduced CI/CD build pipeline to automatically test and deploy the plugin code
 
 ### 1.2.7.7
 * End of development notice
