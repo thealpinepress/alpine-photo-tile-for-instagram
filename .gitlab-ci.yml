@@ -114,7 +114,7 @@ CreatePluginZIP:
     paths:
       - alpine_phototile_for_instagram.zip
 
-PluginSVN:
+ReleaseWPPlugin:
   stage: deploy
   image: containers.ethitter.com:443/docker/images/php:7.3
   before_script:
