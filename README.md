@@ -104,6 +104,7 @@ I am a one-man development team and I distribute these plugins for free, so plea
 * Updated to the latest Wordpress and PHP versions
 * Added Magnific pop up
 * Introduced CI/CD build pipeline to automatically test and deploy the plugin code
+* Removed donate button
 
 ### 1.2.7.7
 * End of development notice

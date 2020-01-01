@@ -197,26 +197,6 @@ public function admin_display_general(){
     <?php
   }
 /**
- * Function displays donation request
- *  
- * @ Since 1.2.4
- * @ Updated 1.2.5
- */
-public function admin_donate_button(){
-    $phrases = array('Pocket change is appreciated.','Buy me a cup of tea?','Help me pay my rent?','You tip your waiter. Why not your WordPress developer?','You tip the pizza deliver boy. Why not your WordPress programmer?');
-    ?>
-    <div>
-      <p>Please support further development of this plugin with a small  <a target="_blank" href="<?php echo $this->get_private('donatelink');?>" title="Donate">donation</a>.
-      <br><?php echo $phrases[rand(0,count($phrases)-1)];?></p>
-      <p>
-        <a target="_blank" href="<?php echo $this->get_private('donatelink');?>" title="Donate">
-        <img class="image-icon" src="<?php echo $this->get_private('url');?>/css/images/paypal_donate.png" style="width:150px;">
-        </a>
-      </p>
-    </div>
-    <?php
-  }
-/**
  * First function for printing options page
  *  
  * @ Since 1.1.0
@@ -812,8 +792,8 @@ public function UpdateUser( $data ){
         echo '</div>';
         
         echo '<div class="bottom" style="position:relative;width:100%;margin-top:20px;">';
-          //$this->admin_donate_button();
-
+        echo '<div class="help-link"><p>'.__('Need Help? Visit ').'<a href="'.$this->get_private('info').'" target="_blank">the Alpine Press</a>'.__(' for more about this plugin.').'</p></div>';
+    	echo '<div><b>**Please Note: This plugin is no longer being developed or maintained. If you are a WordPress developer, I encourage you to take this plugin and make it your own.**</b></div>';
         echo '</div>';
       echo '</div>'; // Close Container
       

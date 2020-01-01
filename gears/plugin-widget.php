@@ -129,8 +129,7 @@ public function form( $options ) {
     }
     ?>
       <div class="bottom">
-        <div><?php //$bot->admin_donate_button();?></div>
-        <div><?php _e('Add the plugin to a page or post using the ') ?><a href="<?php echo 'options-general.php?page='.$bot->get_private('settings').'&tab=generator' ?>" target="_blank">Shortcode Generator</a>.</div> 
+        <div><?php _e('Add the plugin to a page or post using the ') ?><a href="<?php echo 'options-general.php?page='.$bot->get_private('settings').'&tab=generator' ?>" target="_blank">Shortcode Generator</a>.</div>
         <div><?php _e('Check the ') ?><a href="<?php echo 'options-general.php?page='.$bot->get_private('settings').'&tab=plugin-settings' ?>" target="_blank">Plugin Settings</a> <?php _e('page for additional options.') ?></div> 
 				<div><?php _e('Visit the ') ?><a href="<?php echo 'options-general.php?page='.$bot->get_private('settings').'&tab=plugin-tools' ?>" target="_blank">Plugin Tools</a> <?php _e('page to check the plugin\'s loading time on your server.') ?></div> 
         <div><?php _e('Need Help? Visit ') ?><a href="<?php echo $bot->get_private('info'); ?>" target="_blank">the Alpine Press</a> <?php _e('for more about this plugin.') ?></div>
