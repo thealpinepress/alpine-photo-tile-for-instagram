@@ -2,6 +2,8 @@ variables:
   # Configure mysql service (https://hub.docker.com/_/mysql/)
   MYSQL_DATABASE: wordpress_tests
   MYSQL_ROOT_PASSWORD: mysql
+  PLUGIN_SLUG: alpine-photo-tile-for-instagram
+  PLUGIN_VERSION: 1.2.8
 
 cache:
   paths:
