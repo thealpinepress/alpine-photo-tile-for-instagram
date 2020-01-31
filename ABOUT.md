@@ -4,4 +4,4 @@
 
 **The Alpine Press plugins have been originally developed by Eric Burger & Kylin Navarro.**
 
-In 2016 all the plugins and the rights were passed over to Paul Petershagen and he published the plugins on GitHub to allow a wider contribution from the community.
+Since end of 2019 a new team formed consisting of Paul Petershagen & Gangesh Matta to re-launch the plugins in a updated version. 
