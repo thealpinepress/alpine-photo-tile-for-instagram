@@ -4,7 +4,7 @@ variables:
   MYSQL_ROOT_PASSWORD: mysql
   PLUGIN_SLUG: alpine-photo-tile-for-instagram
   PLUGIN_VERSION: 1.2.8
-
+  WP_ORG_ASSETS_DIR: assets
 cache:
   paths:
     - $HOME/.composer
