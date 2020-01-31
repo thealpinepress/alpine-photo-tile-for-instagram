@@ -111,7 +111,7 @@ CreatePluginZIP:
   script:
     - apk update
     - apk add zip
-    - copy README.md readme.txt
+    - cp README.md readme.txt
     - rm jest.config.js
     - zip -r alpine_phototile_for_instagram.zip css/** gears/** js/** cache/** alpine-phototile-for-instagram.php readme.txt README.md LICENSE ABOUT.md
   artifacts:
