@@ -111,7 +111,9 @@ CreatePluginZIP:
   script:
     - apk update
     - apk add zip
-    - zip -r alpine_phototile_for_instagram.zip css/** gears/** js/** cache/** alpine-phototile-for-instagram.php README.md LICENSE ABOUT.md
+    - copy README.md readme.txt
+    - rm jest.config.js
+    - zip -r alpine_phototile_for_instagram.zip css/** gears/** js/** cache/** alpine-phototile-for-instagram.php readme.txt README.md LICENSE ABOUT.md
   artifacts:
     paths:
       - alpine_phototile_for_instagram.zip
@@ -122,7 +124,8 @@ ReleaseWPPlugin:
   before_script:
     - curl -o ./bin/deploy.sh https://git-cdn.e15r.co/open-source/wp-org-plugin-deploy/raw/master/scripts/deploy.sh
     - chmod +x ./bin/deploy.sh
-  script: ./bin/deploy.sh
+  script:
+    - ./bin/deploy.sh
   when: manual
   only:
     - master
