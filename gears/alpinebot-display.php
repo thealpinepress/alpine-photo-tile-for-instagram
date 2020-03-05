@@ -466,7 +466,7 @@ class PhotoTileForInstagramBotTertiary extends PhotoTileForInstagramBotSecondary
   }
  
 /**
- * Alpine Photo Tiles for Social: Photo Retrieval Function
+ * Alpine Photo Tile for Social: Photo Retrieval Function
  * The PHP for retrieving content from Instagram.
  *
  * @ Since 1.0.0

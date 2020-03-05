@@ -17,7 +17,7 @@ class PhotoTileForInstagramPrimary {
   private $vers = '1-2-7';
   private $domain = 'APTFINbyTAP_domain';
   private $settings = 'alpine-photo-tile-for-instagram-settings'; // All lowercase
-  private $name = 'Alpine Photo Tiles for Social';
+  private $name = 'Alpine Photo Tile for Social';
   private $info = 'http://thealpinepress.com/alpine-phototile-for-instagram/';
   private $wplink = 'http://wordpress.org/extend/plugins/alpine-photo-tile-for-instagram/';
   private $page = 'AlpineTile: Instagram';

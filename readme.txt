@@ -1,4 +1,4 @@
-# Alpine Photo Tiles for Social
+# Alpine Photo Tile for Social
 * Contributors: theAlpinePress
 * Tags: photos, instagram, gallery, wall, lightbox 
 * Requires at least: 3.2
@@ -11,14 +11,14 @@
 
 ## Description
 
-Retrieve photos from a particular Instagram user or tag and display them on your WordPress site using the Alpine Photo Tiles for Social. 
+Retrieve photos from a particular Instagram user or tag and display them on your WordPress site using the Alpine Photo Tile for Social. 
 The photos can be linked to the your Instagram page, a specific URL, or to a Lightbox slideshow. 
 Also, the Shortcode Generator makes it easy to insert the widget into posts without learning any of the code. 
 This lightweight but powerful widget takes advantage of WordPress's built in JQuery scripts to create a sleek 
 presentation that I hope you will like. A full description and demonstration is available at 
 [the Alpine Press](http://thealpinepress.com/alpine-phototile-for-instagram/ "Plugin Demo").
 
-**Alpine Photo Tiles for Social Features:**
+**Alpine Photo Tile for Social Features:**
 
 * Display photos in a sidebar, post, or page
 * Multiple styles to allow for customization
@@ -42,12 +42,12 @@ presentation that I hope you will like. A full description and demonstration is 
 **Plugin Installation**
 
 1. Go to the *Plugins->Add New* section of the Admin Panel.
-2. Either search for "Alpine Photo Tiles for Social" or upload the `alpine-photo-tile-for-instagram` folder using the upload tool.
+2. Either search for "Alpine Photo Tile for Social" or upload the `alpine-photo-tile-for-instagram` folder using the upload tool.
 3. Go to the *Plugins->Installed Plugins* and activate the plugin.
 
 **Add a User**
 
-4. Instagram is quite protective of its users. Before your WordPress website can retrieve images from Instagram, you must authorize your WordPress site to access your Instagram account. On the *Plugins->Installed Plugins* page, click on "Add User" under "Alpine Photo Tiles for Social". You will be directed to one of the Instagram plugin's "Add Instagram User" page.
+4. Instagram is quite protective of its users. Before your WordPress website can retrieve images from Instagram, you must authorize your WordPress site to access your Instagram account. On the *Plugins->Installed Plugins* page, click on "Add User" under "Alpine Photo Tile for Social". You will be directed to one of the Instagram plugin's "Add Instagram User" page.
 5. Follow the directions on the "Add User" page to add and save a user to the plugin. I have included the directions here for reference:
 6. Before starting, go to *Instagram.com* and make sure you are logged into the account you wish to add. Once you are logged into Instagram, visit the [Instagram Developer](http://instagram.com/developer/ "Instagram Developer") page.
 7. Once on the Instagram website, click on the "Manage Clients" link. If this is the first time you are adding an app or plugin, Instagram will ask you a few questions. Enter the answers, click "Sign Up", and then click "Manage Clients" again.
