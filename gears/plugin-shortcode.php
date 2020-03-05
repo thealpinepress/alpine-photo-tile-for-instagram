@@ -1,6 +1,6 @@
 <?php
 /**
- * Alpine PhotoTile for Instagram: Shortcode
+ * Alpine Photo Tiles for Social: Shortcode
  *
  * @ Since 1.1.1
  * @ Updated 1.2.7

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Alpine PhotoTile for Instagram: WP_Widget
+ * Alpine Photo Tiles for Social: WP_Widget
  *
  * @ Since 1.1.1
  * @ Updated 1.2.5

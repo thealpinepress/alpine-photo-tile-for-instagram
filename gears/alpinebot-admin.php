@@ -1183,7 +1183,7 @@ class PhotoTileForInstagramAdminSecondary extends PhotoTileForInstagramPrimary
     ?>
       <h1><?php _e('How to add an Instagram User'); ?>:</h1>
       <h3>(<?php _e("Don't worry. I promise it's EASY"); ?>!!!)</h3>
-      <p><?php _e("Below are two different methods for adding users to the Alpine PhotoTile for Instagram plugin. Try Method One first. If it does not work, try Method Two. Please <a href='http://wordpress.org/support/plugin/alpine-photo-tile-for-instagram'>let me know</a> if these directions become outdated."); ?>
+      <p><?php _e("Below are two different methods for adding users to the Alpine Photo Tiles for Social plugin. Try Method One first. If it does not work, try Method Two. Please <a href='http://wordpress.org/support/plugin/alpine-photo-tile-for-instagram'>let me know</a> if these directions become outdated."); ?>
       <?php
                                                                                                   }
 
