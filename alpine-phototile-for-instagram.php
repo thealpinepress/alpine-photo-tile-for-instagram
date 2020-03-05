@@ -3,7 +3,7 @@
 Plugin Name: Alpine Photo Tile for Social
 Plugin URI: http://thealpinepress.com/alpine-phototile-for-instagram/
 Description: The Alpine Photo Tile for Social is capable of retrieving photos from a particular Instagram user or tag. The photos can be linked to the your Instagram page, a specific URL, or to a Fancybox slideshow. Also, the Shortcode Generator makes it easy to insert the widget into posts without learning any of the code. This lightweight but powerful widget takes advantage of WordPress's built in JQuery scripts to create a sleek presentation that I hope you will like.
-Version: 1.2.8
+Version: 1.2.9
 Author: the Alpine Press
 Author URI: http://thealpinepress.com/
 License: GNU General Public License v3.0
@@ -11,7 +11,7 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: alpine-instagram
 
 
-Copyright 2014  Eric Burger
+Copyright 2020
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License, version 3, as 
