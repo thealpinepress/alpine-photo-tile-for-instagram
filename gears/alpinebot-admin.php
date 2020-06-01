@@ -567,20 +567,18 @@ class PhotoTileForInstagramAdminSecondary extends PhotoTileForInstagramPrimary
                                                                                                       // Get the list of valid options
                                                                                                       $valid_options = $optiondetails['valid_options'];
                                                                                                       // Only update setting if input value is in the list of valid options
+                                                                                                      $newinput = sanitize_text_field($newinput);
                                                                                                       $valid_input = (array_key_exists($newinput, $valid_options) ? $newinput : $valid_input);
                                                                                                     }
                                                                                                     // Validate select fields
                                                                                                     else if ('select' == $type || 'select-trigger' == $type) {
                                                                                                       // Get the list of valid options
                                                                                                       $valid_options = $optiondetails['valid_options'];
+                                                                                                      $newinput = sanitize_text_field($newinput);
                                                                                                       // Only update setting if input value is in the list of valid options
                                                                                                       $valid_input = ((isset($newinput) && is_array($valid_options) && array_key_exists($newinput, $valid_options)) ? $newinput : $valid_input);
-                                                                                                    } else if ('range' == $type) {
-                                                                                                      // Only update setting if input value is in the list of valid options
-                                                                                                      $max = (isset($optiondetails['max']) ? $optiondetails['max'] : 100);
-                                                                                                      $min = (isset($optiondetails['min']) ? $optiondetails['min'] : 0);
-                                                                                                      $valid_input = (($newinput >= $min && $newinput <= $max) ? $newinput : $valid_input);
-                                                                                                    }
+                                                                                                    } 
+                                                                                                  
                                                                                                     // Validate text input and textarea fields
                                                                                                     else if (('text' == $type || 'textarea' == $type || 'image-upload' == $type)) {
                                                                                                       $valid_input = strip_tags($newinput);
@@ -812,7 +810,6 @@ class PhotoTileForInstagramAdminSecondary extends PhotoTileForInstagramPrimary
 
                                                                                                     echo '<div class="bottom" style="position:relative;width:100%;margin-top:20px;">';
                                                                                                     echo '<div class="help-link"><p>' . __('Need Help? Visit ') . '<a href="' . $this->get_private('info') . '" target="_blank">the Alpine Press</a>' . __(' for more about this plugin.') . '</p></div>';
-                                                                                                    echo '<div><b>**Please Note: This plugin is no longer being developed or maintained. If you are a WordPress developer, I encourage you to take this plugin and make it your own.**</b></div>';
                                                                                                     echo '</div>';
                                                                                                     echo '</div>'; // Close Container
 
@@ -890,7 +887,7 @@ class PhotoTileForInstagramAdminSecondary extends PhotoTileForInstagramPrimary
           var url = 'https://api.instagram.com/oauth/authorize/' +
             '?redirect_uri=' + encodeURIComponent("<?php echo $redirect; ?>") +
             '&response_type=code' +
-            '&client_id=<?php echo $_POST['client_id']; ?>' +
+            '&client_id=<?php echo intval($_POST['client_id']); ?>' +
             '&display=touch';
 
           window.location.replace(url);
