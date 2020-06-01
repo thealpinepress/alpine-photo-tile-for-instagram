@@ -1364,6 +1364,37 @@ class PhotoTileForInstagramBot extends PhotoTileForInstagramBotTertiary{
       $lightbox_style = (!empty($lightbox_style)? $default.','.$lightbox_style : $default );
       return $setRel."if(jQuery().fancyboxForAlpine){jQuery( 'a[rel^=\'".$this->get_active_option('rel')."\']' ).fancyboxForAlpine( { ".$lightbox_style." } );}";  
     }
+    elseif( 'magnific' == $lightbox ){
+        
+        
+      $titlesrc= "<div class=\"mfp-user\"> <img src=\"'+item.el.attr('data-profile_picture')+ '\"><a href=\"https://instagram.com/'+item.el.attr('data-username')+ '\"> @'+item.el.attr('data-username')+' </a> </div> <div class=\"mfp-caption\">' +item.el.attr('title')+ '</div><div class=\"mfp-info\"><div class=\"mfp-likes\">&#9825; '+item.el.attr('data-image_likes')+' </div><div class=\"mfp-comments\">&#9733; '+item.el.attr('data-image_comments')+'</div><div class=\"mfp-date\">'+item.el.attr('data-image_created')+'</div></div><div class=\"mfp-icons\"><div class=\"mfp-counter\"></div><a class=\"mfp-link\" href=\"'+item.el.attr('data-image_link')+'\">Instagram</a></div>";  
+      
+      $markup = '<div class="mfp-figure right"> <div class="mfp-close"></div><div class="mfp-img"></div> <div class="mfp-bottom-bar"><div class="mfp-title"></div></div></div>';
+    $default = "type: 'image', image: {markup: '".$markup."', titleSrc: function(item) {
+    return '".$titlesrc. "';
+    }} , callbacks: {
+      elementParse: function(item) {
+        
+         if(item.el.attr('data-image_type') == 'video') {
+           item.type = 'iframe';
+           
+           item.markup = 
+             '<div class=\"mfp-iframe-scaler mfp-figure right\">'+
+                    '<div class=\"mfp-close\"></div>'+
+                    '<iframe class=\"mfp-iframe\" frameborder=\"0\" allowfullscreen></iframe>'+
+                  '<div class=\"mfp-bottom-bar\"><div class=\"mfp-title\"></div></div></div>',
+    
+                  item.srcAction = 'iframe_src',
+                  item.titleSrc = function(item) {
+              return '".$titlesrc. "'
+          } }
+       
+      }
+     
+    },  gallery: {enabled:true}";
+    $lightbox_style = (!empty($lightbox_style)? $default.','.$lightbox_style : $default );
+    return $setRel."if(jQuery().magnificPopup){jQuery( 'a[rel^=\'".$this->get_active_option('rel')."\']' ).magnificPopup( { ".$lightbox_style." } );}";  
+  }
     return "";
   }
   
