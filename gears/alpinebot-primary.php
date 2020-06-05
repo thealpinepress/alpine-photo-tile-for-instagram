@@ -1229,5 +1229,14 @@ class PhotoTileForInstagramPrimary {
   }
 }
 
+add_action( 'admin_notices',  'alpine_error_notice') ;
 
-?>
+
+function alpine_error_notice() {
+
+  ?>
+  <div class="error notice is-dismissible">
+      <p><?php _e( 'AlpineTile Instagram. New version available. <a href="https://wordpress.org/plugins/alpine-photo-tile-for-social/">Alpine Photo Tile for Social</a>', 'alpine-instagram' ); ?></p>
+  </div>
+  <?php
+}
