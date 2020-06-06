@@ -1,4 +1,4 @@
-# Alpine Photo Tile for Social
+# Alpine Photo Tile for Instagram
 * Contributors: theAlpinePress
 * Tags: photos, instagram, gallery, wall, lightbox 
 * Requires at least: 3.2
